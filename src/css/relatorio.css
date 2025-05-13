@@ -1,0 +1,457 @@
+@import url(/teste/css/responsividade/RS-relatorio.css);
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes shrinkText {
+    0% {
+        font-size: 1.1rem;
+    }
+
+    100% {
+        font-size: 1rem;
+    }
+}
+
+@keyframes selecao {
+    0% {
+        opacity: 0.4;
+    }
+    100% {
+       opacity: 1;
+    }
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+
+html{
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+body{
+    background-image: linear-gradient(rgb(56, 96, 84), rgb(189, 251, 236), rgb(0, 0, 0));
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    font-family: "Nunito", sans-serif;
+    background-attachment: fixed;
+}
+
+body img{
+    max-width: 100%;
+    max-height: 100%;
+    z-index: 0;
+    position: relative;
+}
+
+
+.cabecalho {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-bottom: rgba(255, 255, 255, 0.096) solid 2px;
+    height: 13%;
+}
+
+.menu{
+    display: grid;
+    width: 70%;
+    grid-template-columns:  repeat(5, 100px);
+    gap: 5%;
+    font-weight: 100;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.item-menu{
+    text-transform: uppercase;
+    color: white;
+    text-decoration:none;
+    font-weight: 200;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo-mafact {
+    width: 120px;
+}
+
+#relatorios{
+    background-image: linear-gradient(to top, rgb(255, 255, 255), rgba(255, 252, 252, 0.425),transparent, rgba(0, 0, 0, 0));
+    border-bottom:  white solid 6px;
+    color: rgb(255, 255, 255);
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: shrinkText 1s ease-in;
+    flex-wrap: wrap;
+    animation: fadeIn 0.5s;
+    height: 200%;
+}
+
+#quadro1:hover,#consultas:hover,#auditorias:hover{
+    background-image: linear-gradient(to top, rgb(255, 255, 255), rgba(255, 252, 252, 0.267),transparent, rgba(0, 0, 0, 0));
+    font-weight: 400;
+    animation: selecao 0.8s; 
+    height: 200%;
+}
+
+.esquerda-cabecalho {
+    display: flex;
+    align-items: center; /* Centraliza verticalmente os itens */
+}
+
+.direita-cabecalho {
+    display: flex;
+    align-items: center; /* Centraliza verticalmente os itens */	
+}   
+
+
+main {
+    animation: fadeIn 1s ease-in-out;
+    opacity: 1;
+    height: 85%;
+    margin-bottom: -3px;
+}
+
+.titulo{
+    color: rgb(255, 255, 255);;
+	font-size: 2.5rem; 
+	font-weight: bold; 
+	display: block;
+	margin-top: 1rem;
+    margin-bottom: 5rem;
+	text-align: center;
+	text-transform: uppercase;
+	letter-spacing: 5px; 
+	text-shadow: 2px 2px 6px rgb(183, 241, 249); 
+	border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.158);
+}
+
+.botoes-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    margin-top: 25px;
+}
+
+.botoes-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.botoes-col {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 1rem;
+    word-break: break-all;
+    position: relative;
+}
+
+.hexagon {
+    width: 200px;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: -25px;
+    fill: #000000;
+    stroke: #fffdfd;
+
+}
+
+.hex-s{
+    stroke: rgb(21, 255, 0);
+}
+
+.hex-q{
+    stroke: rgb(21, 255, 0);
+}
+
+.hex-t{
+    stroke: rgb(255, 0, 0);
+}
+
+.hex-c{
+    stroke: rgb(21, 255, 0);
+}
+
+.hex-m{
+    stroke: rgb(255, 0, 0);
+}
+.hex-doc{
+    stroke: rgb(255, 0, 0);
+}
+
+.hexagon:hover polygon {
+    stroke: rgb(74, 245, 202); 
+    fill: rgb(255, 255, 255);
+    animation: fadeIn 0.7s;
+}
+
+.hexagon:hover polygon ~ .text_rec,.hexagon:hover polygon ~ .text{
+    fill: rgb(74, 245, 202);
+}
+
+.texto, .texto-doc, .texto-projet {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Centraliza o texto */
+    font-size: small;
+    color: #111111;
+}
+
+.text {
+    font-size: 30px;
+    position: absolute;
+    border: none;
+    font-weight: 800;
+    stroke: none;
+    fill:#ffffff; 
+    text-anchor:middle;
+    text-transform: uppercase;
+    text-align: center;
+    text-wrap: wrap;
+}
+
+.text_rec{
+    font-size: 22px;
+    position: absolute;
+    border: none;
+    font-weight: 800;
+    stroke: none;
+    fill:#ffffff; 
+    text-anchor:middle;
+    text-transform: uppercase;
+}
+
+.text_rec1{
+    font-size: 20px;
+    position: absolute;
+    border: none;
+    font-weight: 800;
+    stroke: none;
+    fill:#ffffff; 
+    text-anchor:middle;
+    text-transform: uppercase;
+    
+}
+
+.text_doc{
+    font-size: 17.5px;
+    position: absolute;
+    border: none;
+    font-weight: 800;
+    fill:#ffffff; 
+    text-anchor:middle;
+    text-transform: uppercase;
+    
+}
+
+.tspan{
+    fill: red;
+    font-size: 45px;
+    position: absolute;
+    border: none;
+    font-weight: 800;
+    stroke: none; 
+    text-anchor:middle;
+    text-transform: uppercase;
+    
+}
+
+.textweb{
+    fill: red;
+    font-size: 30px;
+    position: absolute;
+    border: none;
+    font-weight: 800;
+    stroke: none; 
+    text-anchor:middle;
+    text-transform: uppercase;
+    text-decoration: underline;
+    
+}
+
+.texttools{
+    fill: rgb(255, 255, 255);
+    font-size: 30px;
+    position: absolute;
+    border: none;
+    font-weight: 800;
+    stroke: none; 
+    text-anchor:middle;
+    text-transform: uppercase;
+    text-decoration: underline;
+    
+}
+
+
+.texto::first-letter{
+	color: red;
+    position: absolute;
+}
+
+.imagem-magna {
+		display: flex;
+		justify-content: center;
+}
+
+	
+
+.hidden {
+        display: none;
+}
+
+.tamanho-iframe {
+    display: none; 
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    border: none; 
+    background-color: white; 
+}
+
+.expandir {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    color: white;
+    width: 20%;
+    height: 15%;
+    position: absolute;
+    top: 83%;
+    right: 40%;
+    z-index: 1;
+}
+
+.tamanho-expan {
+    width: 12px;
+}
+
+.expandir img{
+    transform: scale(3);
+    background-color: #fdfffe;
+    border-radius: 50%;
+}
+
+.tamanho-iframe.fullscreen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    border: none;
+    background-color: white; 
+}
+
+.voltar {
+    width: 35px;
+    margin-left: 0.2rem;
+}
+
+.voltar-btn {
+    color: red;
+    height: 35px;
+    font-weight: 600;
+    background:none;    
+    border: none;
+    align-items: center;
+    position: fixed;
+    line-height: 40px;
+    top: 20px;
+    right: 20px;
+    z-index: 10000;
+    display: none;
+    font-size: 0rem;
+}
+
+.voltar-btn:hover {
+    font-size: 1.5rem;
+    padding: 0 0.2rem;
+    color: #180000;
+    transition: 0.5s;
+    border-radius:0.3em ;
+}
+
+footer {
+    background-color: #000000f3;
+    color: aliceblue;
+    display: flex;
+    justify-content: space-between;
+    padding: 2rem 0;
+    border-top: rgba(255, 255, 255, 0.096) solid 2px;
+}
+
+.equipe {
+    display: grid;
+    grid-template-columns:  repeat(4, 150px);
+    font-weight: 100;
+    justify-content: space-around;
+}
+
+.item-footer {
+    font-size: 0.8rem;
+    font-weight: 100;
+    text-align: center;
+    color: #888585;
+}
+
+.titulo-footer {
+    margin-bottom: 0.2rem;
+    font-size: 1rem;
+    font-weight: 400;
+    color: rgba(73, 77, 73, 0.801);
+}
+.redes {
+    display: flex;
+    align-items: center;
+    margin-right: 2rem;
+    justify-content: center;
+    opacity: 0.7;
+}
+
+.redes-item {
+    margin-left: 3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.logo-magna {
+    margin-bottom: -1rem;
+}
+
+.icone {
+    margin-top: -1rem;
+}

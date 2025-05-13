@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta http-equiv="refresh" content="auto">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/teste/css/Tela1.css">
+    <link rel="stylesheet" href="/teste/css/reset.css">
+    <link rel="stylesheet" href="/teste/css/scrollbar.css">
+    <link rel="stylesheet" href="/teste/css/responsividade/RS-quadro1.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/handsontable@11.0.0/dist/handsontable.full.min.css">
+    <link rel="icon" type="image/png" href="/teste/img/icone-aba.png" class="icone">
+    <link href="https://fonts.cdnfonts.com/css/helvetica-neue-55" rel="stylesheet"> 
+    <title>Quadro Nivel 01 Monitoramento KPI's</title>
+    
+
+</head>
+<body class="background">
+    <header class="cabecalho">
+        <div class="esquerda-cabecalho">
+        <img src="/teste/img/MAGNA OFF WHITE.png" alt="" class="logo-magna" width="200">
+    </div>
+    <div class="menu">
+        <a class="item-menu" id="quadro1" href="/teste/html/Tela1.html">Quadro nível 1</a>
+        <a class="item-menu" id="relatorios" href="/teste/html/Relatorios.html">Relatórios</a>
+        <a class="item-menu" id="consultas" href="/teste/html/Consultas.html">Consulta de Documentos</a>
+        <a class="item-menu" id="auditorias" href="/teste/html/Auditorias.html">Resultados Auditorias</a>
+        <a class="item-menu" id="item05" href="">item 05</a>
+    </div>
+        <div class="direita-cabecalho">
+        <img src="/teste/img/MafactLogo.png" class="logo-mafact" alt="">
+        </div>
+    </header>
+    <div class="grupo-filtros">
+    <button id="filtro" class="filtros">Filtros <img src="/teste/img/filtro.png" width="30" alt="" style="margin-left: 5%;"></button>
+    <div class="filtros-aplicados">
+        <p class="titulo-rot-filtro">
+            <span class="texto-centralizado">Quadro</span>
+            <span class="texto-centralizado">correspondente:</span>
+        </p>
+        <p class="linha-rot-filtro">Local: <strong class="strong-rot-titulo">Linha 05</strong></p>
+        <p class="turno-rot-filtro"><strong class="strong-rot-titulo">1° Turno</strong></p>
+        <p class="dia-rot-filtro">Dia: <strong class="strong-rot-titulo">02</strong></p>
+        <p class="mes-rot-filtro">Mês: <strong class="strong-rot-titulo">Setembro</strong></p>
+        <p class="ano-rot-filtro">Ano:   <strong class="strong-rot-titulo">2024</strong></p>
+    </div>
+    </div>
+    <div class="sidebar">
+            <button class="x-filtro"> 
+                <section class="escondeu"></section>
+            </button>
+        <p class="texto-filtro">Selecione os filtros abaixo para uma analise <strong class="texto-filtro-strong">específica</strong> do cenário que <br>deseja visualizar</p>
+    <div class="container-filtros">
+        <!-- Container para o dropdown das linhas de produção, por favor deixa eu fazer o commit, eu te odeio git -->
+        <div class="linha-dropdown-container">
+            <p class="titulo-filtro">Linha</p>
+            <select id="linha-select" class="linha-dropdown">
+                <option value="101">Linha 05</option>
+                <option value="90">Linha 01 LE</option>
+                <option value="91">Linha 01 LD</option>
+                <option value="86">Linha 02 LD</option>
+                <option value="87">Linha 02 LE</option>
+                <option value="88">Linha 03 LE</option>
+                <option value="89">Linha 03 LD</option>
+                <option value="66">Linha 04 LE</option>
+                <option value="67">Linha 04 LD</option>
+                <option value="105">Linha 06</option>
+                <option value="30">injetora 30</option>
+            </select>
+        </div>
+    
+        <!-- Container para o rótulo "Turno" e os botões -->
+        <div id="turno-buttons-container" class="container-turno">
+            <p class="titulo-filtro">Turno</p>
+            <div id="turno-buttons" class="turno">
+                <button data-shift="0" class="select-turno">Extra</button>
+                <button data-shift="1" class="select-turno">1° Turno</button>
+                <button data-shift="2" class="select-turno">2° Turno</button>
+                <button data-shift="3" class="select-turno">3° Turno</button>
+            </div>
+        </div>
+    
+        <!-- Container para os meses -->
+        <div class="container-mes">
+            <p class="titulo-filtro">Mês</p>
+            <div class="date-mes">
+                <!-- Botões dos meses -->
+                <button class="select-mes" id="01">Janeiro</button>
+                <button class="select-mes" id="02">Fevereiro</button>
+                <button class="select-mes" id="03">Março</button>
+                <button class="select-mes" id="04">Abril</button>
+                <button class="select-mes" id="05">Maio</button>
+                <button class="select-mes" id="06">Junho</button>
+                <button class="select-mes" id="07">Julho</button>
+                <button class="select-mes" id="08">Agosto</button>
+                <button class="select-mes" id="09">Setembro</button>
+                <button class="select-mes" id="10">Outubro</button>
+                <button class="select-mes" id="11">Novembro</button>
+                <button class="select-mes" id="12">Dezembro</button>
+            </div>
+        </div>
+        <!-- Container para os dias -->
+        <div class="container-dias">
+            <p class="titulo-filtro titulo-dias">Dias</p>
+            <div class="date-dias">
+                <!-- Botões dos dias -->
+                <button class="select-dia" id="01">01</button>
+                <button class="select-dia" id="02">02</button>
+                <button class="select-dia" id="03">03</button>
+                <button class="select-dia" id="04">04</button>
+                <button class="select-dia" id="05">05</button>
+                <button class="select-dia" id="06">06</button>
+                <button class="select-dia" id="07">07</button>
+                <button class="select-dia" id="08">08</button>
+                <button class="select-dia" id="09">09</button>
+                <button class="select-dia" id="10">10</button>
+                <button class="select-dia" id="11">11</button>
+                <button class="select-dia" id="12">12</button>
+                <button class="select-dia" id="13">13</button>
+                <button class="select-dia" id="14">14</button>
+                <button class="select-dia" id="15">15</button>
+                <button class="select-dia" id="16">16</button>
+                <button class="select-dia" id="17">17</button>
+                <button class="select-dia" id="18">18</button>
+                <button class="select-dia" id="19">19</button>
+                <button class="select-dia" id="20">20</button>
+                <button class="select-dia" id="21">21</button>
+                <button class="select-dia" id="22">22</button>
+                <button class="select-dia" id="23">23</button>
+                <button class="select-dia" id="24">24</button>
+                <button class="select-dia" id="25">25</button>
+                <button class="select-dia" id="26">26</button>
+                <button class="select-dia" id="27">27</button>
+                <button class="select-dia" id="28">28</button>
+                <button class="select-dia" id="29">29</button>
+                <button class="select-dia" id="30">30</button>
+                <button class="select-dia" id="31">31</button>
+                </div>
+            </div>
+            <button class="reset-filtro"><img src="/teste/img/recarregar.png" class="recarregar-filtro" width="30" alt="">RESETAR FILTRO</button>
+        </div>
+    </div>
+    
+    <main class="principal">
+        
+        <div class="hamburguer">
+            <button class="teste"><img src="/teste/img/hamburguer.png" style="display: block;" width="30" height="30" alt="" id="img-hamburguer">
+            <div class="linha"></div>
+            <div class="linha2"></div>
+            </button>
+            <section class="menu-hamburguer">
+                <img class="web-icon" src="/teste/img/icone-webtools.png" width="58" height="58" alt="">
+                <div class="hamb-itens">
+                <a class="item-hamb" id="q1" href="#"><img src="" class="icon-hamb" width="30" alt="">Quadro <br>nível 1</a>
+                <a class="item-hamb" id="rel" href="/teste/html/Relatorios.html"> <img src="" class="icon-hamb" width="30" alt=""> Relatórios </a>
+                <a class="item-hamb" id="con" href="/teste/html/Consultas.html"> <img src="" class="icon-hamb" width="30" alt=""> Consulta <br> Documentos</a>
+                <a class="item-hamb" id="res" href="/teste/html/Auditorias.html"> <img src="" class="icon-hamb" width="30" alt=""> Resultados <br>Auditorias</a>
+                <a class="item-hamb" id="item" href="#">item 05</a>
+                </div>
+                <div class="contato">
+                    <img src="/teste/img/contato.png" class="contato-icon" width="30" alt="">
+                    <button class="contato-link">Entre em contato conosco!</button>
+                    <div class="contato-categorias" style="display: none;">
+                    <a class="lista-contatos" href="">Whatsapp</a>
+                    <a class="lista-contatos" href="">E-mail</a>
+                    <a class="lista-contatos" href="">Teams</a>
+                    </div>
+                </div>
+         </section>
+        </div>
+        <div class="seguranca">
+            <h2 class="row-titulo">segurança</h2>
+            <div class="calendario">
+                <!-- Header com nome do mês e círculos -->
+                <div class="header">
+                    <p id="nome-mes"class="mes-rot-titulo-seg">Setembro</strong></p>
+                    <div class="circulos">
+                        <div class="num-seg1" id="contador-ff4d4d">0</div>
+                        <div class="num-seg2" id="contador-e2b100">0</div>
+                        <div class="num-seg3" id="contador-4e73df">0</div>
+                        <div class="num-seg4" id="contador-343a40">0</div>
+                        <div class="num-seg5" id="contador-27e256">0</div>
+                    </div>
+                </div>
+        
+                <!-- Calendário de dias -->
+                <div class="dias">
+                    <!-- Dias do mês -->
+                    
+                    <button class="dia" id="dia1">1</button>
+                    <div id="colorSelector" class="color-selector hidden">
+                        <p id="descricaoColorSelector">SELECIONE A COR:</p>
+                        <div class="color-option" style="background-color: #ff4d4d;" data-color="#ff4d4d"></div>
+                        <div class="color-option" style="background-color: #e2b100;" data-color="#e2b100"></div>
+                        <div class="color-option" style="background-color: #343a40;" data-color="#343a40"></div>
+                        <div class="color-option" style="background-color: #4e73df;" data-color="#4e73df"></div>
+                        <div class="color-option" style="background-color: #27e256;" data-color="#27e256"></div>
+                    </div>
+                    
+                    <div id="formulario" class="hidden">
+                        <textarea id="campoTexto" placeholder="Descreva o acidente..."></textarea><br>
+                        <button id="salvarForm" onclick="salvarFormulario(1)">SALVAR</button>
+                    </div>
+                    <button class="dia" id="dia2">2</button>
+                    <button class="dia" id="dia3">3</button>
+                    <button class="dia" id="dia4">4</button>
+                    <button class="dia" id="dia5">5</button>   
+                    <button class="dia" id="dia6">6</button>
+                    <button class="dia" id="dia7">7</button>
+                    <button class="dia" id="dia8">8</button>
+                    <button class="dia" id="dia9">9</button>
+                    <button class="dia" id="dia10">10</button>
+                    <button class="dia" id="dia11">11</button>
+                    <button class="dia" id="dia12">12</button>
+                    <button class="dia" id="dia13">13</button>
+                    <button class="dia" id="dia14">14</button>
+                    <button class="dia" id="dia15">15</button>
+                    <button class="dia" id="dia16">16</button>
+                    <button class="dia" id="dia17">17</button>
+                    <button class="dia" id="dia18">18</button>
+                    <button class="dia" id="dia19">19</button>
+                    <button class="dia" id="dia20">20</button>
+                    <button class="dia" id="dia21">21</button>
+                    <button class="dia" id="dia22">22</button>
+                    <button class="dia" id="dia23">23</button>
+                    <button class="dia" id="dia24">24</button>
+                    <button class="dia" id="dia25">25</button>
+                    <button class="dia" id="dia26">26</button>
+                    <button class="dia" id="dia27">27</button>
+                    <button class="dia" id="dia28">28</button>
+                    <button class="dia" id="dia29">29</button>
+                    <button class="dia" id="dia30">30</button>
+                    <button class="dia" id="dia31">31</button>
+                    
+                </div>
+               
+                
+        
+                <!-- Legenda -->
+                <div class="legenda">
+                    <ul>
+                        <li class="acidente">Acidente</li>
+                        <li class="quase-acidente">Quase acidente</li>
+                        <li class="bomSeg">Sem acidentes</li>
+                        <li class="incidente">Incidente</li>
+                        <li class="situacao-risco">Situação de risco</li>
+                    </ul>
+                </div>
+            </div>
+            
+        </div>
+        <div class="qualidade">
+            <h2 class="row-titulo">qualidade</h2>
+            <div class="calendario-qua">
+                <!-- Header com nome do mês e círculos -->
+                <div class="header">
+                    <p id="nome-mes"class="mes-rot-titulo-qua">Setembro</strong></p>
+                    <div class="quadrados-qua">
+                        <div class="num-qua1" id="contadorQua-ff4d4d">0</div>
+                        <div class="num-qua2" id="contadorQua-e2b100">0</div>
+                        <div class="num-qua3" id="contadorQua-27e256">0</div>
+                    </div>
+                </div>
+        
+                <!-- Calendário de dias -->
+                <div class="dias">
+                    <!-- Dias da semana -->
+        
+                    <!-- Dias do mês -->
+                    <button class="dia" id="diaQua1">1</button>
+                    <div id="ColorSelectorQua" class="color-selector-qua hidden">
+                        <p id="descricaoColorSelector">SELECIONE A COR:</p>
+                        <div class="color-option" style="background-color: #ff4d4d;" data-color="#ff4d4d"></div>
+                        <div class="color-option" style="background-color: #e2b100;" data-color="#e2b100"></div>
+                        <div class="color-option" style="background-color: #27e256;" data-color="#27e256"></div>
+                    </div>
+                    
+                    <div id="formularioQua" style="display: none;">
+                        <textarea id="campoTextoQua" placeholder="Descreva a reclamação..."></textarea><br>
+                        <button id="salvarForm" onclick="salvarFormularioQua(currentButtonIndexQua)">SALVAR</button>
+                    </div>
+                    <button class="dia" id="diaQua2">2</button>
+                    <button class="dia" id="diaQua3">3</button>
+                    <button class="dia" id="diaQua4">4</button>
+                    <button class="dia" id="diaQua5">5</button>   
+                    <button class="dia" id="diaQua6">6</button>
+                    <button class="dia" id="diaQua7">7</button>
+                    <button class="dia" id="diaQua8">8</button>
+                    <button class="dia" id="diaQua9">9</button>
+                    <button class="dia" id="diaQua10">10</button>
+                    <button class="dia" id="diaQua11">11</button>
+                    <button class="dia" id="diaQua12">12</button>
+                    <button class="dia" id="diaQua13">13</button>
+                    <button class="dia" id="diaQua14">14</button>
+                    <button class="dia" id="diaQua15">15</button>
+                    <button class="dia" id="diaQua16">16</button>
+                    <button class="dia" id="diaQua17">17</button>
+                    <button class="dia" id="diaQua18">18</button>
+                    <button class="dia" id="diaQua19">19</button>
+                    <button class="dia" id="diaQua20">20</button>
+                    <button class="dia" id="diaQua21">21</button>
+                    <button class="dia" id="diaQua22">22</button>
+                    <button class="dia" id="diaQua23">23</button>
+                    <button class="dia" id="diaQua24">24</button>
+                    <button class="dia" id="diaQua25">25</button>
+                    <button class="dia" id="diaQua26">26</button>
+                    <button class="dia" id="diaQua27">27</button>
+                    <button class="dia" id="diaQua28">28</button>
+                    <button class="dia" id="diaQua29">29</button>
+                    <button class="dia" id="diaQua30">30</button>
+                    <button class="dia" id="diaQua31">31</button>
+                </div>
+        
+                <!-- Legenda -->
+                <div class="legenda1">
+                    <ul>
+                        <li class="acidente">Reclamação Cliente</li>
+                        <li class="quase-acidente">Reclamação Interna</li>
+                        <li class="bom">Sem Reclamação</li>
+                    </ul>
+                </div>
+        </div>
+        
+
+        </div>
+        <div class="tempo">
+            <h2 class="row-titulo">Tempo</h2>
+            <div class="row-tem">
+                <h3 class="nome-doc">Controle Diário de OEE</h3>
+                <section class="card-tempo-div">
+                <div id="tem1" class="tem1">Pior OEE do Mês</div>
+                <div id="tem2" class="tem2">Status atual</div>
+            </section>
+            <p class="meta-oee">Meta: 85%</p>
+                <img id="iframe3" src="/teste/img/powerbiOEE.PNG" class="tamanho-iframe" alt="">
+                <button class="expandir" onclick="expandirIframe('iframe3')">
+                    <img src="/teste/img/expandir.png" class="tamanho-expan" alt="">
+                </button>
+                <button class="voltar-btn" onclick="voltarTelaCheia('iframe3')">
+                    Voltar<img src="/teste/img/voltar.png" class="voltar" alt="">
+                </button>
+            </div>
+        </div>
+        <div class="custo">
+            <h2 class="row-titulo">Custo</h2>
+            <div class="row-cus">
+                <h3 class="nome-doc">Controle Diário de Refugo</h3>
+                <section class="cards-scrap">
+                <div id="scrapOntem" class="cus1">Total de Refugo do Mês</div>
+                <div id="scrapHoje" class="cus2">Status atual</div>
+               </section>
+                <iframe id="iframe4" class="tamanho-iframe" frameborder="0" scrolling="no" src="https://magna-my.sharepoint.com/personal/jonathan_neres_partner_magna_com/_layouts/15/Doc.aspx?sourcedoc={c6588335-9f30-4bc1-ac2c-803e26064c32}&action=embedview&wdAllowInteractivity=False&wdHideGridlines=True&wdHideHeaders=True&wdInConfigurator=True"></iframe>
+                <button class="expandir" onclick="expandirIframe('iframe4')">
+                    <img src="/teste/img/expandir.png" class="tamanho-expan" alt="">
+                </button>
+                <button class="voltar-btn" onclick="voltarTelaCheia('iframe4')">
+                    Voltar<img src="/teste/img/voltar.png" class="voltar" alt="">
+                </button>
+            </div>
+        </div>
+        <div class="motivacao">
+            <h2 class="row-titulo">motivação</h2>
+
+            <div class="row-mot">
+                <h3 class="nome-doc">Status PIC</h3>
+                <section class="cards-mot">
+                <div class="mot1">Número de sugestões enviadas no Mês</div>
+                <div class="mot2">Número de Implementações Realizadas</div>
+            </section>
+                <!--<iframe id="iframe5" class="tamanho-iframe" frameborder="0" scrolling="no" src="https://magna-my.sharepoint.com/personal/jonathan_neres_partner_magna_com/_layouts/15/Doc.aspx?sourcedoc={c6588335-9f30-4bc1-ac2c-803e26064c32}&action=embedview&wdAllowInteractivity=False&wdHideGridlines=True&wdHideHeaders=True&wdInConfigurator=True&wdInConfigurator=True"></iframe>-->
+                <img id="iframe5" src="/teste/img/5s.PNG" class="tamanho-iframe" alt="">
+                <button class="expandir" onclick="expandirIframe('iframe5')"><img src="/teste/img/expandir.png" class="tamanho-expan" alt=""></button> 
+                <button class="voltar-btn" onclick="voltarTelaCheia('iframe5')">Voltar<img src="/teste/img/voltar.png" class="voltar" alt=""></button>
+            </div>
+            <div class="row-mot">
+                <h3 class="nome-doc">Radar 5S</h3>
+                <div class="mot3">Ultima nota de 5s da linha</div>
+                <!--<iframe id="iframe5" class="tamanho-iframe" frameborder="0" scrolling="no" src="https://magna-my.sharepoint.com/personal/jonathan_neres_partner_magna_com/_layouts/15/Doc.aspx?sourcedoc={c6588335-9f30-4bc1-ac2c-803e26064c32}&action=embedview&wdAllowInteractivity=False&wdHideGridlines=True&wdHideHeaders=True&wdInConfigurator=True&wdInConfigurator=True"></iframe>-->
+                <img id="iframe5" src="/teste/img/5s.PNG" class="tamanho-iframe" alt="">
+                <button class="expandir" onclick="expandirIframe('iframe5')"><img src="/teste/img/expandir.png" class="tamanho-expan" alt=""></button> 
+                <button class="voltar-btn" onclick="voltarTelaCheia('iframe5')">Voltar<img src="/teste/img/voltar.png" class="voltar" alt=""></button>
+            </div>
+            
+        </div>
+                   
+    </main>
+    <footer>
+
+        <section class="equipe">
+        <div class="item-footer">
+        <h1  class="titulo-footer">Desenvolvido por:</h1>
+        <p>Jonathan Neres <br>Jonathas Oliveira <br>Giovana Amorim</p>
+    </div>
+
+    <div class="item-footer">
+        <h1 class="titulo-footer">Documentações e Cotações:</h1>
+        <p>Gustavo Gallego <br>Victor Nunes </p>
+    </div>
+
+    <div class="item-footer">
+        <h1  class="titulo-footer">Design:</h1>
+        <p>Arthur Facca <br>Jonathas Oliveira<br>Gabriel Carneiro </p>
+    </div>
+
+    <div class="item-footer">
+        <h1 class="titulo-footer">DBA:</h1>
+        <p>Giovana Amorim <br> Gabriel Carneiro<br> Jonathan Neres </p>
+    </div>
+</section>
+
+<section class="redes">
+
+    <div class="redes-item">
+        <img src="/teste/img/icone-webtools.png" class="icone" width="90" alt="">
+    </div>
+    <div class="redes-item">
+    <img src="/teste/img/MAGNA OFF WHITE.png" class="logo-magna" width="130" alt="">
+    <img src="/teste/img/MafactLogo.png" width="90" height="55" alt="">
+    </div>
+    
+
+</section>
+
+    </footer>
+    <script src="/teste/Js/index.js"></script>
+    <script src="/teste/Js/Formulario.js"></script>
+    <script src="/teste/Js/colorPickerSeg.js"></script>
+    <script src="/teste/Js/colorPickerQua.js"></script>
+    <script src="/teste/Js/FormularioQua.js"></script>
+    <script src="/teste/Js/hamburguer.js"></script>
+    <script src="/teste/Js/banco.js"></script>
+    <script src="/teste/Js/segurança.js"></script>
+    <script src="/teste/Js/qualidade.js"></script>
+    <script src="/teste/Js/tempo.js"></script>
+    <script src="/teste/Js/custo.js"></script>
+    <script src="/teste/Js/ButtonTurno.js"></script>
+    <script src="/teste/Js/calendario.js"></script>
+    <script src="/teste/Js/configurarDias.js"></script>
+    
+</body>
+</html>

@@ -1,0 +1,215 @@
+/* Estilos Gerais */
+html, body {
+    font-family: Arial, sans-serif;
+    background-image: linear-gradient(rgb(65, 65, 65), rgb(238, 237, 237), rgb(0, 0, 0));
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box;
+    display: flex; 
+    flex-direction: column;
+}
+/* Layout para Centralização do Container */
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centralizar verticalmente */
+}
+
+.container {
+    margin: 40%;
+    margin-bottom: 45%;
+    position: relative;
+    box-sizing: border-box;
+}
+/* Cabeçalho */
+header.cabecalho {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed; /* Fixar no topo */
+    top: 0;
+    left: 0;
+    background: rgba(64, 63, 63, 0.8);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+
+}
+
+/* Ajustar tamanhos das imagens */
+header .logo-magna {
+    width: 200px;
+}
+
+header .logo-mafact {
+    width: 150px;
+}
+
+/* Container Principal */
+.container {
+    background: #fff;
+    border-radius: 8%;
+    border: 3px solid #000;
+    box-shadow: 0 4px 6px rgba(76, 0, 255, 0.327);
+    padding: 20px;
+    width: 100%;
+    max-width: 400px;
+    position: relative;
+    box-sizing: border-box;
+}
+
+/* Cabeçalho do Formulário */
+.row-titulo{
+    font-size: 24px;
+    color: #333;
+    text-align: center;
+    margin-bottom: 10px;
+    background-image: linear-gradient(to right, rgb(0, 0, 0), rgb(17, 4, 137), rgb(54, 2, 56), rgb(17, 2, 148)); /* Gradiente vermelho para o sublinhado */
+    background-repeat: no-repeat;
+    background-position: bottom;
+    background-size: 50% 5px;
+    letter-spacing: 5px; 
+    text-shadow: 1px 1px 3px rgba(83, 81, 81, 0.667); 
+    border-radius: 5px;
+        
+}
+.row-titulo::first-letter{
+    color: red;
+}
+
+/* Formulários */
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+
+label {
+    font-size: 14px;
+    margin-bottom: 5px;
+    color: #666;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 15px;
+    font-size: 14px;
+}
+
+/* Botões de Navegação */
+button {
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    background-image: radial-gradient(circle, rgb(15, 2, 43), rgb(29, 2, 26), rgb(0, 0, 0));
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
+}
+
+/* Botões posicionados nas extremidades do container */
+.container-buttons {
+    display: flex;
+    justify-content: space-between;
+}
+
+button.cadastro {
+    margin-left: 0;
+    margin-right:16.75% ;
+}
+
+button.reset_senha {
+    margin-right: 0;
+    margin-left: 16.75%;
+}
+
+/* Mensagens de Status */
+.status-message {
+    font-size: 14px;
+    margin-top: 10px;
+    text-align: center;
+}
+
+.success {
+    color: green;
+}
+
+.error {
+    color: red;
+}
+
+/* Botões de Navegação */
+button.back {
+    background-color: #6c757d;
+}
+
+button.back:hover {
+    background-color: #5a6268;
+}
+
+/* Rodapé */
+footer {
+    width: 100%;
+    background-color: #000000f3;
+    color: aliceblue;
+    display: flex;
+    justify-content: space-between;
+    padding: 2rem 0;
+    border-top: rgba(255, 255, 255, 0.096) solid 2px;
+    position: fixed;
+    bottom: 0; /* Fixar na base */
+    left: 0;
+}
+
+.equipe {
+    display: grid;
+    grid-template-columns: repeat(4, 150px);
+    font-weight: 100;
+    justify-content: space-around;
+}
+
+.item-footer {
+    font-size: 0.8rem;
+    font-weight: 100;
+    text-align: center;
+    color: #888585;
+}
+
+.titulo-footer {
+    margin-bottom: 0.2rem;
+    font-size: 1rem;
+    font-weight: 400;
+    color: rgba(73, 77, 73, 0.801);
+}
+
+.redes {
+    display: flex;
+    align-items: center;
+    margin-right: 2rem;
+    justify-content: center;
+    opacity: 0.7;
+}
+
+.redes-item {
+    margin-left: 3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.logo-magna {
+    margin-bottom: -1rem;
+}
+
+.icone {
+    margin-top: -1rem;
+}
+

@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabela Dinâmica com Dados de Produção</title>
+    <style>
+        h2, br {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .progress-bar {
+            height: 20px;
+            border-radius: 10px;
+            position: relative;
+            background-color: #e0e0e0;
+            display: flex;
+        }
+        .progress-bar .progress {
+            height: 100%;
+            border-radius: 10px;
+            transition: width 0.3s ease-in-out;
+        }
+        .green {
+            background-color: #4CAF50;
+        }
+        .red {
+            background-color: #f44336;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Relatório de Produção <br>Janeiro - Novembro</h2>
+    <button id="download-csv">Baixar CSV</button>
+    <button id="download-txt">Baixar TXT</button>
+    <table id="api-result">
+        <thead>
+            <tr>
+                <th>Máquina</th>
+                <th>Tempo Total (segundos)</th>
+                <th>Tempo de Parada (segundos)</th>
+                <th>Porcentagem de Parada</th>
+                <th>Barra de Progresso</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Os dados serão preenchidos aqui dinamicamente -->
+        </tbody>
+    </table>
+
+    <script>
+        async function obterDadosTempo() {
+            const url = 'http://10.109.132.159:20620/Records/1';
+            const headers = {
+                'accept': '*/*',
+                'cell': '1',
+                'excludeFields': 'none',
+                'fields': '*',
+                'from': '2024/06/01',
+                'to': '2024/12/01',
+                'groupBy': 'Machine',
+                'includeTotalRecord': 'true',
+                'isPaged': 'true',
+                'machine': '*',
+                'machineOperator': '*',
+                'mold': '*',
+                'operation': '*',
+                'pageSize': '20',
+                'part': '*',
+                'productionOrder': '*',
+                'scrap': '*',
+                'scrapsIncludeNameField': 'true',
+                'scrapsMaxElements': '50',
+                'scrapsOrder': 'Desc',
+                'scrapsOrderBy': 'Quantity',
+                'shift': '*',
+                'stop': '1-1102,1500-1000000',
+                'stopsIncludeDurationField': 'true',
+                'stopsIncludeNameField': 'true',
+                'stopsMaxElements': '100',
+                'stopsDurationFormat': 'HHMMSS',
+                'stopsOrder': 'Desc',
+                'stopsOrderBy': 'Duration',
+                'subGroupingLevel': 'Shift'
+            };
+
+            try {
+                const response = await fetch(url, { headers });
+                if (!response.ok) throw new Error('Erro ao obter dados do servidor.');
+                const data = await response.json();
+                console.log('Dados da API:', data);
+                return data;
+            } catch (error) {
+                console.error('Erro ao obter dados de tempo:', error);
+                return null;
+            }
+        }
+
+        // Função para carregar os dados da API e atualizar a tabela
+        async function carregarDadosEAtualizar() {
+            const dados = await obterDadosTempo(); // Corrigido aqui
+
+            if (dados) {
+                const tabela = document.getElementById('api-result').getElementsByTagName('tbody')[0];
+                dados.forEach(item => {
+                    const row = tabela.insertRow();
+
+                    const maquina = row.insertCell(0);
+                    maquina.textContent = item.groupName || 'Desconhecido';
+
+                    const tempoTotal = row.insertCell(1);
+                    tempoTotal.textContent = item.totalTime || '0';
+
+                    const tempoParada = row.insertCell(2);
+                    tempoParada.textContent = item.totalStopTime || '0';
+
+                    const porcentagemParada = row.insertCell(3);
+                    const porcentagem = ((item.totalStopTime / item.totalTime) * 100).toFixed(2) || 0;
+                    porcentagemParada.textContent = `${porcentagem}%`;
+
+                    const barraProgresso = row.insertCell(4);
+                    const progressBar = document.createElement('div');
+                    progressBar.classList.add('progress-bar');
+                    const progress = document.createElement('div');
+                    progress.classList.add('progress');
+                    progress.style.width = `${porcentagem}%`;
+                    progress.classList.add('red');
+                    progressBar.appendChild(progress);
+
+                    const greenProgress = document.createElement('div');
+                    greenProgress.classList.add('progress');
+                    greenProgress.style.width = `${100 - porcentagem}%`;
+                    greenProgress.classList.add('green');
+                    progressBar.appendChild(greenProgress);
+
+                    barraProgresso.appendChild(progressBar);
+                });
+            }
+        }
+
+        // Chama a função para carregar os dados assim que a página for carregada
+        document.addEventListener('DOMContentLoaded', carregarDadosEAtualizar);
+
+        // Implementação do Download CSV
+        document.getElementById('download-csv').addEventListener('click', function () {
+            let tabela = document.getElementById('api-result');
+            let linhas = Array.from(tabela.rows);
+            let csvConteudo = '';
+            linhas.forEach(row => {
+                let colunas = Array.from(row.cells);
+                let dados = colunas.map(cell => cell.textContent).join(',');
+                csvConteudo += dados + '\n';
+            });
+
+            let blob = new Blob([csvConteudo], { type: 'text/csv' });
+            let url = URL.createObjectURL(blob);
+            let link = document.createElement('a');
+            link.href = url;
+            link.download = 'dados_producao.csv';
+            link.click();
+        });
+
+        // Implementação do Download TXT
+        document.getElementById('download-txt').addEventListener('click', function () {
+            let tabela = document.getElementById('api-result');
+            let linhas = Array.from(tabela.rows);
+            let txtConteudo = '';
+            linhas.forEach(row => {
+                let colunas = Array.from(row.cells);
+                let dados = colunas.map(cell => cell.textContent).join('\t');
+                txtConteudo += dados + '\n';
+            });
+
+            let blob = new Blob([txtConteudo], { type: 'text/plain' });
+            let url = URL.createObjectURL(blob);
+            let link = document.createElement('a');
+            link.href = url;
+            link.download = 'dados_producao.txt';
+            link.click();
+        });
+    </script>
+</body>
+</html>

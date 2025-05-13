@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aplicação</title>
+    <link rel="stylesheet" href="/teste/css/testelogin.css">
+    
+</head>
+<body>
+    <header class="cabecalho">
+        <div class="esquerda-cabecalho">
+            <img src="/teste/img/MAGNA OFF WHITE.png" alt="Logo Magna" class="logo-magna">
+        </div>
+        <div class="direita-cabecalho">
+            <img src="/teste/img/MafactLogo.png" alt="Logo Mafact" class="logo-mafact">
+        </div>
+    </header>
+    <div class="container">
+        <div id="loginSection">
+            <h1 class="row-titulo">Bem-vindo</h1>
+            <form id="loginForm">
+                <label for="loginEmail">E-mail:</label>
+                <input type="email" id="loginEmail" name="email" required>
+                <label for="loginPassword">Senha:</label>
+                <input type="password" id="loginPassword" name="password" required>
+                <button type="submit">Entrar</button>
+                <span id="loginStatus" class="status-message"></span>
+            </form>
+            <button class="cadastro" onclick="showSection('registerSection')">Cadastro</button>
+            <button class="reset_senha" onclick="showSection('resetSection')">Recuperar Senha</button>
+        </div>
+
+        <div id="registerSection" style="display:none;">
+            <h1>Cadastro</h1>
+            <form id="registerForm">
+                <label for="registerNome">Nome:</label>
+                <input type="text" id="registerNome" name="nome" required>
+                <label for="registerSobrenome">Sobrenome:</label>
+                <input type="text" id="registerSobrenome" name="sobrenome">
+                <label for="registerCpf">CPF:</label>
+                <input type="text" id="registerCpf" name="cpf" required>
+                <label for="registerEmail">E-mail:</label>
+                <input type="email" id="registerEmail" name="email" required>
+                <label for="registerPassword">Senha:</label>
+                <input type="password" id="registerPassword" name="password" required>
+                <button type="submit">Registrar</button>
+            </form>
+            <div id="registerStatus" class="status-message"></div> <!-- Adicionado para status -->
+            <button onclick="showSection('loginSection')">Voltar</button>
+        </div>
+
+        <div id="resetSection" style="display:none;">
+            <h1>Recuperar Senha</h1>
+            <form id="resetPasswordForm">
+                <label for="resetEmail">E-mail:</label>
+                <input type="email" id="resetEmail" name="email" required>
+                <label for="resetCpf">CPF:</label>
+                <input type="text" id="resetCpf" name="cpf" required>
+                <label for="resetNewPassword">Nova Senha:</label>
+                <input type="password" id="resetNewPassword" name="password" required>
+                <button type="submit">Enviar Recuperação</button>
+                <span id="resetStatus" class="status-message"></span>
+            </form>
+            <button class="back" onclick="showSection('loginSection')">Voltar</button>
+        </div>
+    </div>
+    <footer>
+
+        <section class="equipe">
+        <div class="item-footer">
+        <h1  class="titulo-footer">Desenvolvido por:</h1>
+        <p>Jonathan Neres <br>Jonathas Oliveira <br>Giovana Carmim</p>
+    </div>
+
+    <div class="item-footer">
+        <h1 class="titulo-footer">Documentações e Cotações:</h1>
+        <p>Gustavo Gallego <br>Victor Nunes </p>
+    </div>
+
+    <div class="item-footer">
+        <h1  class="titulo-footer">Design:</h1>
+        <p>Arthur Facca <br>Jonathas Oliveira<br>Gabriel Carneiro </p>
+    </div>
+
+    <div class="item-footer">
+        <h1 class="titulo-footer">DBA:</h1>
+        <p>Giovana Amorim <br> Gabriel Carneiro<br> Jonathan Neres </p>
+    </div>
+</section>
+
+<section class="redes">
+
+    <div class="redes-item">
+        <img src="/teste/img/icone-webtools.png" class="icone" width="90" alt="">
+    </div>
+    <div class="redes-item">
+    <img src="/teste/img/MAGNA OFF WHITE.png" class="logo-magna" width="130" alt="">
+    <img src="/teste/img/MafactLogo.png" width="90" height="55" alt="">
+    </div>
+
+    
+
+</section>
+
+    </footer>
+    <script src="/teste/Js/app.js"></script>
+    <script src="/teste/Js/banco.js"></script>
+    <script src="/teste/Js/testecusto.js"></script>
+</body>
+</html>
